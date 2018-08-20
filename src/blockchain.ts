@@ -7,7 +7,7 @@ import {
 import {addToTransactionPool, getTransactionPool, updateTransactionPool} from './transactionPool';
 import {hexToBinary} from './util';
 import {createTransaction, findUnspentTxOuts, getBalance, getPrivateFromWallet, getPublicFromWallet} from './wallet';
-
+// import {Transaction, TxIn,TxOut} from "./transaction";
 class Block {
 
     public index: number;
