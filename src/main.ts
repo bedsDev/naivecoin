@@ -9,9 +9,31 @@ import {connectToPeers, getSockets, initP2PServer} from './p2p';
 import {UnspentTxOut} from './transaction';
 import {getTransactionPool} from './transactionPool';
 import {getPublicFromWallet, initWallet} from './wallet';
+import * as commandLineArgs from "command-line-args";
+
+const optionDefiniations: commandLineArgs.OptionDefinition[] = [
+    { name: "http-port", alias: "h", type: Number },
+    { name: "p2p-port", alias: "p", type: Number }
+]
+const parseOptions: commandLineArgs.ParseOptions = {
+    argv: process.argv,
+    partial: true,
+    camelCase: true
+}
+
+const options = commandLineArgs(optionDefiniations,parseOptions);
+
+
+// const httpPort: number = options.httpPort || 3001;
+// const p2pPort: number = options.p2pPort || 6001;
+
 
 const httpPort: number = parseInt(process.env.HTTP_PORT) || 3001;
 const p2pPort: number = parseInt(process.env.P2P_PORT) || 6001;
+console.log("process.argv", process.argv);
+
+console.log("httpPort", httpPort, "p2pPort",p2pPort)
+
 
 const initHttpServer = (myHttpPort: number) => {
     const app = express();
