@@ -6,10 +6,14 @@ The repository for the naivecoin tutorial: https://lhartikk.github.io/
 npm install
 npm start
 ```
-## Windows Command Line Setting Environment Variables 
+## Windows Command Line Setting Environment Variables for 3 nodes
 ```
+// setting  node 1 to use the default settings
 set HTTP_PORT=3001 & set P2P_PORT=6001 & npm start
-set HTTP_PORT=3002 & set P2P_PORT=6002 & set PEERS=ws://localhost:6001 & npm start
+// setting  node 2, a new console window
+set HTTP_PORT=3002 & set P2P_PORT=6002 & set PRIVATE_KEY=node/wallet/private_key2 & set PEERS=ws://localhost:6001 & npm start
+// setting  node 3, a new console window
+set HTTP_PORT=3003 & set P2P_PORT=6003 & set PRIVATE_KEY=node/wallet/private_key3 & set PEERS=ws://localhost:6001 & npm start
 curl -H "Content-type:application/json" --data "{\"data\" : \"Some data to the first block\"}" http://localhost:3001/mineBlock
 ```
 ##### Get blockchain
