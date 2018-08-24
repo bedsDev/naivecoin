@@ -9,19 +9,19 @@ import {connectToPeers, getSockets, initP2PServer} from './p2p';
 import {UnspentTxOut} from './transaction';
 import {getTransactionPool} from './transactionPool';
 import {getPublicFromWallet, initWallet} from './wallet';
-import * as commandLineArgs from "command-line-args";
+// import * as commandLineArgs from "command-line-args";
 
-const optionDefiniations: commandLineArgs.OptionDefinition[] = [
-    { name: "http-port", alias: "h", type: Number },
-    { name: "p2p-port", alias: "p", type: Number }
-]
-const parseOptions: commandLineArgs.ParseOptions = {
-    argv: process.argv,
-    partial: true,
-    camelCase: true
-}
+// const optionDefiniations: commandLineArgs.OptionDefinition[] = [
+//     { name: "http-port", alias: "h", type: Number },
+//     { name: "p2p-port", alias: "p", type: Number }
+// ]
+// const parseOptions: commandLineArgs.ParseOptions = {
+//     argv: process.argv,
+//     partial: true,
+//     camelCase: true
+// }
 
-const options = commandLineArgs(optionDefiniations,parseOptions);
+// const options = commandLineArgs(optionDefiniations,parseOptions);
 
 
 // const httpPort: number = options.httpPort || 3001;
