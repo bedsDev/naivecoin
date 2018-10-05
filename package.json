@@ -5,7 +5,9 @@
   "scripts": {
     "prestart": "npm run compile",
     "start": "node src/main.js",
-    "compile": "tsc"
+    "compile": "tsc",
+
+    "test-encryption":"cd ./node_modules/openpgp/ && npm run-script test"
   },
   "dependencies": {
     "@types/command-line-args": "^5.0.0",
