@@ -35,19 +35,19 @@
          encrypted = ciphertext.data // '-----BEGIN PGP MESSAGE ... END PGP MESSAGE-----'
          return encrypted
      })
-    //  .then(encrypted => {
-    //      const options = {
-    //          message: await openpgp.message.readArmored(encrypted),    // parse armored message
-    //          publicKeys: (await openpgp.key.readArmored(pubkey)).keys, // for verification (optional)
-    //          privateKeys: [privKeyObj]                                 // for decryption
-    //      }
+     .then(encrypted => {
+         const options = {
+             message: await openpgp.message.readArmored(encrypted),    // parse armored message
+             publicKeys: (await openpgp.key.readArmored(pubkey)).keys, // for verification (optional)
+             privateKeys: [privKeyObj]                                 // for decryption
+         }
           
-    //      openpgp.decrypt(options).then(plaintext => {
-    //          console.log(plaintext.data)
-    //          return plaintext.data // 'Hello, World!'
-    //      })
+         openpgp.decrypt(options).then(plaintext => {
+             console.log(plaintext.data)
+             return plaintext.data // 'Hello, World!'
+         })
         
-    //  })
+     })
  }
  
  encryptDecryptFunction()

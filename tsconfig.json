@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
+    "outDir": "./dist/",
     "module": "commonjs",
-    "target": "es5",
-    "strict": true,
+    "target": "ES2015",
+    // "strict": true,
     "sourceMap": true
   },
   "include": [
+    // "src/**/*"
     "src/main.ts",
     "src/block.ts",
     "src/p2p.ts",
