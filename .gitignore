@@ -3,4 +3,4 @@ npm-debug.log
 .idea
 src/*.js
 src/*.map
-dist/
+dist/*
