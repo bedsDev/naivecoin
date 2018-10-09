@@ -2,7 +2,7 @@ var path = require('path')
 var webpack = require('webpack')
 // const VueLoaderPlugin = require('vue-loader')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: './src/app/index.ts',
@@ -14,6 +14,15 @@ module.exports = {
 
     module: {
         rules: [
+            {
+                test:/\.html$/,
+                use:[
+                    {
+                        loader:"html-loader",
+                        options:{minimize:true}
+                    }
+                ]
+            },
             {
                 test: /\.css$/,
                 use: [
@@ -61,7 +70,12 @@ module.exports = {
         ]
     },
     plugins: [
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new HtmlWebpackPlugin({
+            template:"./src/app/index.html",
+            filename:"index.html",
+            inject:false
+        })
     ],
     resolve: {
         extensions: ['.ts', '.js', '.vue', '.json'],

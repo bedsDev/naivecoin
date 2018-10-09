@@ -2,19 +2,14 @@
   "compilerOptions": {
     "outDir": "./dist/",
     "module": "commonjs",
+    "moduleResolution": "node",
     "target": "ES2015",
+    "noImplicitThis": true,
     // "strict": true,
     "sourceMap": true
   },
   "include": [
-    // "src/**/*"
-    "src/main.ts",
-    "src/block.ts",
-    "src/p2p.ts",
-    "src/util.ts",
-    "src/transaction.ts",
-    "src/wallet.ts",
-    "src/transactionPool.ts"
+    "./src/**/*"
   ],
   "exclude": [
     "node_modules"

@@ -1,12 +1,12 @@
 import * as CryptoJS from 'crypto-js';
 import * as _ from 'lodash';
-import {broadcastLatest, broadCastTransactionPool} from './p2p';
+import { broadcastLatest, broadCastTransactionPool } from './p2p';
 import {
     getCoinbaseTransaction, isValidAddress, processTransactions, Transaction, UnspentTxOut
 } from './transaction';
-import {addToTransactionPool, getTransactionPool, updateTransactionPool} from './transactionPool';
-import {hexToBinary} from './util';
-import {createTransaction, findUnspentTxOuts, getBalance, getPrivateFromWallet, getPublicFromWallet} from './wallet';
+import { addToTransactionPool, getTransactionPool, updateTransactionPool } from './transactionPool';
+import { hexToBinary } from './util';
+import { createTransaction, findUnspentTxOuts, getBalance, getPrivateFromWallet, getPublicFromWallet } from './wallet';
 // import {Transaction, TxIn,TxOut} from "./transaction";
 class Block {
 
@@ -19,7 +19,7 @@ class Block {
     public nonce: number;
 
     constructor(index: number, hash: string, previousHash: string,
-                timestamp: number, data: Transaction[], difficulty: number, nonce: number) {
+        timestamp: number, data: Transaction[], difficulty: number, nonce: number) {
         this.index = index;
         this.previousHash = previousHash;
         this.timestamp = timestamp;
@@ -31,7 +31,7 @@ class Block {
 }
 
 const genesisTransaction = {
-    'txIns': [{'signature': '', 'txOutId': '', 'txOutIndex': 0}],
+    'txIns': [{ 'signature': '', 'txOutId': '', 'txOutIndex': 0 }],
     'txOuts': [{
         'address': '04bfcab8722991ae774db48f934ca79cfb7dd991229153b9f732ba5334aafcd8e7266e47076996b55a14bf9913ee3145ce0cfc1372ada8ada74bd287450313534a',
         'amount': 50
@@ -155,7 +155,7 @@ const calculateHashForBlock = (block: Block): string =>
     calculateHash(block.index, block.previousHash, block.timestamp, block.data, block.difficulty, block.nonce);
 
 const calculateHash = (index: number, previousHash: string, timestamp: number, data: Transaction[],
-                       difficulty: number, nonce: number): string =>
+    difficulty: number, nonce: number): string =>
     CryptoJS.SHA256(index + previousHash + timestamp + data + difficulty + nonce).toString();
 
 const isValidBlockStructure = (block: Block): boolean => {
@@ -194,7 +194,7 @@ const getAccumulatedDifficulty = (aBlockchain: Block[]): number => {
 };
 
 const isValidTimestamp = (newBlock: Block, previousBlock: Block): boolean => {
-    return ( previousBlock.timestamp - 60 < newBlock.timestamp )
+    return (previousBlock.timestamp - 60 < newBlock.timestamp)
         && newBlock.timestamp - 60 < getCurrentTimestamp();
 };
 
