@@ -7,7 +7,8 @@
     "prestart": "npm run compile",
     "start": "node ./dist/main.js",
     "compile": "tsc",
-    "test-encryption": "cd ./node_modules/openpgp/ && npm run-script test"
+    "test-encryption": "cd ./node_modules/openpgp/ && npm run-script test",
+    "encryption": "ts-node ./src/tryencryption.ts"
   },
   "dependencies": {
     "@types/command-line-args": "^5.0.0",
@@ -20,6 +21,7 @@
     "express": "~4.11.1",
     "lodash": "^4.17.4",
     "openpgp": "^4.1.0",
+    "rsa-key": "0.0.6",
     "ts-node": "^3.2.0",
     "ws": "^3.0.0"
   },
