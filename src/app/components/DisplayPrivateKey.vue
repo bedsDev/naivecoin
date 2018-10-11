@@ -1,33 +1,26 @@
 <template>
     <div>
-        <div class="greeting">Hello {{name}}{{exclamationMarks}}</div>
-        <button @click="decrement">-</button>
-        <button @click="increment">+</button>
+        <div class="greeting">Private Key: {{privateKey}}</div>
     </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+// import {getPrivateFromWallet} from "../../wallet";
 
 export default Vue.extend({
     props: ['name', 'initialEnthusiasm'],
     data() {
+        let key:string = "getPrivateFromWallet()";
         return {
-            enthusiasm: this.initialEnthusiasm,
+            privateKey: key,
         }
     },
     methods: {
-        increment() { this.enthusiasm++; },
-        decrement() {
-            if (this.enthusiasm > 1) {
-                this.enthusiasm--;
-            }
-        },
+        
     },
     computed: {
-        exclamationMarks(): string {
-            return Array(this.enthusiasm + 1).join('!');
-        }
+       
     }
 });
 // import { Vue, Component, Prop } from "vue-property-decorator";

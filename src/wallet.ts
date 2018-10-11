@@ -134,4 +134,3 @@ const createTransaction = (receiverAddress: string, amount: number, privateKey: 
 
 export {createTransaction, getPublicFromWallet,
     getPrivateFromWallet, getBalance, generatePrivateKey, initWallet, deleteWallet, findUnspentTxOuts};
-2

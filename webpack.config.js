@@ -3,9 +3,13 @@ var webpack = require('webpack')
 // const VueLoaderPlugin = require('vue-loader')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackExternalsPlugin = require("html-webpack-externals-plugin")
 
 module.exports = {
-    entry: './src/app/index.ts',
+    entry: {
+        // vue: 'vue',
+        index: './src/app/index.ts'
+    },
     output: {
         path: path.resolve(__dirname, './dist/app'),
         publicPath: '/dist/',
@@ -15,11 +19,11 @@ module.exports = {
     module: {
         rules: [
             {
-                test:/\.html$/,
-                use:[
+                test: /\.html$/,
+                use: [
                     {
-                        loader:"html-loader",
-                        options:{minimize:true}
+                        loader: "html-loader",
+                        options: { minimize: true }
                     }
                 ]
             },
@@ -46,8 +50,14 @@ module.exports = {
                         // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
                         // the "scss" and "sass" values for the lang attribute to the right configs here.
                         // other preprocessors should work out of the box, no loader config like this necessary.
-                        'scss': 'vue-style-loader!css-loader!sass-loader',
-                        'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
+                        // 'scss': 'vue-style-loader!css-loader!sass-loader',
+                        // 'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
+                        css: ['vue-style-loader', {
+                            loader: 'css-loader',
+                        }],
+                        js: [
+                            'babel-loader',
+                        ],
                     }
                     // other vue-loader options go here
                 }
@@ -55,7 +65,10 @@ module.exports = {
             {
                 test: /\.tsx?$/,
                 loader: 'ts-loader',
-                exclude: /node_modules/,
+                // exclude: /node_modules/,
+                exclude: file => (
+                    /node_modules/.test(file) 
+                  ),
                 options: {
                     appendTsSuffixTo: [/\.vue$/],
                 }
@@ -69,13 +82,28 @@ module.exports = {
             }
         ]
     },
+    externals: {
+        // getPrivateFromWallet:"wallet",
+        // fs:"fs"
+        // vue:"Vue"
+    },
     plugins: [
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
-            template:"./src/app/index.html",
-            filename:"index.html",
-            inject:false
-        })
+            template: "./src/app/index.html",
+            filename: "index.html",
+            inject: false
+        }),
+        // new HtmlWebpackExternalsPlugin({
+        //     externals: [
+        //         {
+        //             module: 'vue',
+        //             entry: "https://cdn.jsdelivr.net/npm/vue/dist/vue.js",
+        //             global: "Vue"
+        //         }
+        //     ]
+        // })
+
     ],
     resolve: {
         extensions: ['.ts', '.js', '.vue', '.json'],
@@ -90,7 +118,8 @@ module.exports = {
     performance: {
         hints: false
     },
-    devtool: '#eval-source-map'
+    devtool: 'source-map',
+
 }
 
 if (process.env.NODE_ENV === 'production') {
