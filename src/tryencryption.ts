@@ -31,11 +31,19 @@ function encrypto() {
     // let publicKeyHex:string = hex_to_ascii(publicKey);
     console.log("privateKey", "\n", privateKey)
     console.log("publicKey", "\n", publicKey)
-    var key = new RSAKey(publicKey);
-    var output = key.exportKey();
-    console.log("pem: ", output)
-    let en = crypto.publicEncrypt(output,new Buffer("for ppublic key encryption"))
-    console.log(en);
+    // var key = new RSAKey(publicKey);
+    // var output = key.exportKey();
+
+    let buff =  Buffer.from(publicKey,'hex');
+    let keyPem = buff.toString('base64');
+
+    // keyPem = `-----BEGIN EC PRIVATE KEY-----\r\n${keyPem}\r\n-----END EC PRIVATE KEY-----`;
+    keyPem =`-----BEGIN PUBLIC KEY-----${keyPem}-----END PUBLIC KEY-----`
+
+
+    console.log("pem: ", keyPem)
+    let en = crypto.publicEncrypt(keyPem,new Buffer("for ppublic key encryption"))
+    console.log("encrypted",en);
 
     // const cipher = crypto.createCipher('aes192', 'a password');
 
@@ -53,6 +61,7 @@ function encrypto() {
     // cipher.write('some clear text data');
     // cipher.end();
 }
+
 
 
 encrypto();
