@@ -3,7 +3,7 @@ var webpack = require('webpack')
 // const VueLoaderPlugin = require('vue-loader')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackExternalsPlugin = require("html-webpack-externals-plugin")
+// const HtmlWebpackExternalsPlugin = require("html-webpack-externals-plugin")
 
 module.exports = {
     entry: {
