@@ -3,7 +3,7 @@ var webpack = require('webpack')
 // const VueLoaderPlugin = require('vue-loader')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackExternalsPlugin = require("html-webpack-externals-plugin")
+// const HtmlWebpackExternalsPlugin = require("html-webpack-externals-plugin")
 
 module.exports = {
     entry: {
@@ -15,7 +15,6 @@ module.exports = {
         publicPath: '/dist/',
         filename: 'build.js'
     },
-
     module: {
         rules: [
             {
@@ -67,8 +66,8 @@ module.exports = {
                 loader: 'ts-loader',
                 // exclude: /node_modules/,
                 exclude: file => (
-                    /node_modules/.test(file) 
-                  ),
+                    /node_modules/.test(file)
+                ),
                 options: {
                     appendTsSuffixTo: [/\.vue$/],
                 }

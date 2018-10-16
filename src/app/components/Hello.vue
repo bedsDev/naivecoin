@@ -8,50 +8,27 @@
 
 <script lang="ts">
 import Vue from "vue";
-
 export default Vue.extend({
-    props: ['name', 'initialEnthusiasm'],
-    data() {
+    props:['name', 'initialEnthusiasm'],
+    data(){
         return {
-            enthusiasm: this.initialEnthusiasm,
+            enthusiasm:this.initialEnthusiasm
         }
     },
-    methods: {
-        increment() { this.enthusiasm++; },
-        decrement() {
-            if (this.enthusiasm > 1) {
+    methods:{
+        increment(){this.enthusiasm++},
+        decrement(){
+            if(this.enthusiasm>1){
                 this.enthusiasm--;
             }
-        },
+        }
     },
-    computed: {
-        exclamationMarks(): string {
-            return Array(this.enthusiasm + 1).join('!');
+    computed:{
+        exclamationMarks():string{
+            return Array(this.enthusiasm+1).join("!")
         }
     }
-});
-// import { Vue, Component, Prop } from "vue-property-decorator";
-
-// @Component
-// export default class HelloDecorator extends Vue {
-//     @Prop() name!: string;
-//     @Prop() initialEnthusiasm!: number;
-
-//     enthusiasm = this.initialEnthusiasm;
-
-//     increment() {
-//         this.enthusiasm++;
-//     }
-//     decrement() {
-//         if (this.enthusiasm > 1) {
-//             this.enthusiasm--;
-//         }
-//     }
-
-//     get exclamationMarks(): string {
-//         return Array(this.enthusiasm + 1).join('!');
-//     }
-// }
+})
 </script>
 <style>
 .greeting{
