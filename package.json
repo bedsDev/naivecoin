@@ -9,7 +9,9 @@
     "start": "node ./dist/main.js",
     "compile": "tsc",
     "test-encryption": "cd ./node_modules/openpgp/ && npm run-script test",
-    "encryption": "ts-node ./src/tryencryption.ts"
+    "encryption": "ts-node ./src/tryencryption.ts",
+    "encryptos": "ts-node ./src/encryptoo.spec.ts"
+    
   },
   "dependencies": {
     "@types/command-line-args": "^5.0.0",
